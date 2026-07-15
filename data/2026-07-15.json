@@ -1,0 +1,122 @@
+{
+  "date": "2026-07-15",
+  "generatedAt": "2026-07-15T02:14:12.840Z",
+  "sessionDate": "2026-07-14",
+  "pairs": {
+    "USDJPY": {
+      "sessionDate": "2026-07-14",
+      "prevHigh": 162.486,
+      "prevLow": 161.641,
+      "prevClose": 162.272,
+      "adr20": 0.693,
+      "atr14": 0.698,
+      "pivot": 162.133,
+      "r1": 162.625,
+      "s1": 161.78,
+      "adr20Pips": 69,
+      "atr14Pips": 70
+    },
+    "EURUSD": {
+      "sessionDate": "2026-07-14",
+      "prevHigh": 1.1462,
+      "prevLow": 1.13784,
+      "prevClose": 1.14211,
+      "adr20": 0.00465,
+      "atr14": 0.00483,
+      "pivot": 1.14205,
+      "r1": 1.14626,
+      "s1": 1.1379,
+      "adr20Pips": 46,
+      "atr14Pips": 48
+    },
+    "GBPUSD": {
+      "sessionDate": "2026-07-14",
+      "prevHigh": 1.34382,
+      "prevLow": 1.33408,
+      "prevClose": 1.33916,
+      "adr20": 0.00551,
+      "atr14": 0.0059,
+      "pivot": 1.33902,
+      "r1": 1.34396,
+      "s1": 1.33422,
+      "adr20Pips": 55,
+      "atr14Pips": 59
+    },
+    "EURJPY": {
+      "sessionDate": "2026-07-14",
+      "prevHigh": 185.904,
+      "prevLow": 184.812,
+      "prevClose": 185.333,
+      "adr20": 0.856,
+      "atr14": 0.882,
+      "pivot": 185.349,
+      "r1": 185.887,
+      "s1": 184.795,
+      "adr20Pips": 86,
+      "atr14Pips": 88
+    },
+    "AUDUSD": {
+      "sessionDate": "2026-07-14",
+      "prevHigh": 0.6992,
+      "prevLow": 0.69133,
+      "prevClose": 0.69744,
+      "adr20": 0.00342,
+      "atr14": 0.00373,
+      "pivot": 0.69599,
+      "r1": 0.70065,
+      "s1": 0.69278,
+      "adr20Pips": 34,
+      "atr14Pips": 37
+    },
+    "EURGBP": {
+      "sessionDate": "2026-07-14",
+      "prevHigh": 0.85611,
+      "prevLow": 0.85161,
+      "prevClose": 0.85289,
+      "adr20": 0.00277,
+      "atr14": 0.00279,
+      "pivot": 0.85354,
+      "r1": 0.85546,
+      "s1": 0.85096,
+      "adr20Pips": 28,
+      "atr14Pips": 28
+    },
+    "XAUUSD": {
+      "sessionDate": "2026-07-14",
+      "prevHigh": 4099.2,
+      "prevLow": 3985.81,
+      "prevClose": 4052.83,
+      "adr20": 71.08,
+      "atr14": 74.91,
+      "pivot": 4045.95,
+      "r1": 4106.09,
+      "s1": 3992.69,
+      "adr20Pips": null,
+      "atr14Pips": null
+    }
+  },
+  "sentiment": {
+    "DXY": {
+      "label": "ドル指数",
+      "value": 100.8,
+      "prev": 101.28,
+      "change": -0.48,
+      "changePct": -0.48
+    },
+    "US10Y": {
+      "label": "米10年債利回り",
+      "value": 0.459,
+      "prev": 0.461,
+      "change": -0.002,
+      "changePct": -0.52
+    },
+    "VIX": {
+      "label": "VIX",
+      "value": 16.5,
+      "prev": 17.16,
+      "change": -0.66,
+      "changePct": -3.85
+    }
+  },
+  "errors": []
+}
