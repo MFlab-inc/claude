@@ -141,8 +141,10 @@ async function fetchYahoo(item) {
     (c) => c !== null && c !== undefined
   );
   if (closes.length < 2) throw new Error(`Yahoo 終値不足 (${item.symbol})`);
-  const value = closes[closes.length - 1] / item.divisor;
-  const prev = closes[closes.length - 2] / item.divisor;
+let value = closes[closes.length - 1] / item.divisor;
+  let prev = closes[closes.length - 2] / item.divisor;
+  // 米10年債のスケール自動補正（どちらの表記で来ても4.59%になる）
+  if (item.code === "US10Y" && value < 1) { value *= 10; prev *= 10; }
   return {
     label: item.label,
     value: round(value, item.digits),
