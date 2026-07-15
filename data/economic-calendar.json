@@ -1,0 +1,96 @@
+{
+  "as_of": "2026-07-15T13:39:34+09:00",
+  "date": "2026-07-15",
+  "timezone": "Asia/Tokyo",
+  "source": "Forex Factory calendar feed",
+  "filters": {
+    "currencies": [
+      "USD",
+      "JPY",
+      "EUR",
+      "GBP",
+      "AUD",
+      "CAD",
+      "CHF",
+      "CNY"
+    ],
+    "impacts": [
+      "High",
+      "Medium"
+    ]
+  },
+  "events": [
+    {
+      "time_jst": "05:00",
+      "datetime_jst": "2026-07-15T05:00:00+09:00",
+      "currency": "GBP",
+      "impact": "High",
+      "event": "BOE Gov Bailey Speaks",
+      "forecast": null,
+      "previous": null
+    },
+    {
+      "time_jst": "21:30",
+      "datetime_jst": "2026-07-15T21:30:00+09:00",
+      "currency": "USD",
+      "impact": "High",
+      "event": "Core PPI m/m",
+      "forecast": "0.3%",
+      "previous": "0.4%"
+    },
+    {
+      "time_jst": "21:30",
+      "datetime_jst": "2026-07-15T21:30:00+09:00",
+      "currency": "USD",
+      "impact": "High",
+      "event": "PPI m/m",
+      "forecast": "0.0%",
+      "previous": "1.1%"
+    },
+    {
+      "time_jst": "22:45",
+      "datetime_jst": "2026-07-15T22:45:00+09:00",
+      "currency": "CAD",
+      "impact": "High",
+      "event": "BOC Monetary Policy Report",
+      "forecast": null,
+      "previous": null
+    },
+    {
+      "time_jst": "22:45",
+      "datetime_jst": "2026-07-15T22:45:00+09:00",
+      "currency": "CAD",
+      "impact": "High",
+      "event": "BOC Rate Statement",
+      "forecast": null,
+      "previous": null
+    },
+    {
+      "time_jst": "22:45",
+      "datetime_jst": "2026-07-15T22:45:00+09:00",
+      "currency": "CAD",
+      "impact": "High",
+      "event": "Overnight Rate",
+      "forecast": "2.25%",
+      "previous": "2.25%"
+    },
+    {
+      "time_jst": "23:00",
+      "datetime_jst": "2026-07-15T23:00:00+09:00",
+      "currency": "USD",
+      "impact": "High",
+      "event": "Fed Chairman Warsh Testifies",
+      "forecast": null,
+      "previous": null
+    },
+    {
+      "time_jst": "23:45",
+      "datetime_jst": "2026-07-15T23:45:00+09:00",
+      "currency": "CAD",
+      "impact": "High",
+      "event": "BOC Press Conference",
+      "forecast": null,
+      "previous": null
+    }
+  ]
+}
