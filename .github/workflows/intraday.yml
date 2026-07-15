@@ -33,6 +33,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/intraday.json data/gpt-feed.html
+          git add data/intraday.json data/gpt-feed.html data/gpt-feed.txt
           git diff --cached --quiet || git commit -m "intraday: $(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M')"
           git push
