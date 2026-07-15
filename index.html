@@ -31,6 +31,12 @@
   }
   h1 { font-size: 1.3rem; font-weight: 600; }
   .meta { color: var(--muted); font-size: 0.85rem; }
+  .refresh-btn {
+    margin-left: auto; padding: 5px 14px; font-size: 0.85rem;
+    background: transparent; border: 1px solid var(--accent); color: var(--accent);
+    border-radius: 6px; cursor: pointer;
+  }
+  .refresh-btn:disabled { opacity: 0.4; cursor: default; }
   h2 {
     font-size: 1rem; font-weight: 600; color: var(--muted);
     margin: 24px 0 10px; letter-spacing: 0.05em;
@@ -52,10 +58,21 @@
     background: var(--card); border: 1px solid var(--border); border-radius: 8px;
     padding: 14px 16px;
   }
-  .p-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .p-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
   .p-name { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.03em; }
-  .p-close { font-size: 1.2rem; font-weight: 600; color: var(--accent); }
-  .p-close small { color: var(--muted); font-size: 0.7rem; font-weight: 400; margin-right: 4px; }
+  .p-now { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+  .p-now small { color: var(--muted); font-size: 0.68rem; font-weight: 400; margin-right: 4px; }
+  .today-line {
+    display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted);
+    margin-bottom: 8px; font-variant-numeric: tabular-nums;
+  }
+  .today-line b { color: var(--text); font-weight: 500; }
+  /* ADR消化率バー */
+  .adr-use { margin: 6px 0 10px; }
+  .adr-use .bar-label { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--muted); margin-bottom: 3px; }
+  .adr-use .bar-label b { color: var(--text); }
+  .bar-track { height: 7px; background: #21262d; border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; background: var(--green); transition: width 0.4s; }
   table.levels { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
   table.levels td { padding: 4px 2px; border-bottom: 1px solid #21262d; }
   table.levels td:first-child { color: var(--muted); }
@@ -64,7 +81,27 @@
   .r1 { color: var(--green); }
   .s1 { color: var(--red); }
   .pv { color: var(--gold); }
+  .r2 { color: #2ea043; opacity: 0.85; }
+  .s2 { color: #da3633; opacity: 0.85; }
   .pips { color: var(--muted); font-size: 0.78rem; font-weight: 400; }
+  /* チャート */
+  .chart-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)); gap: 12px; }
+  @media (max-width: 540px) { .chart-grid { grid-template-columns: 1fr; } }
+  .chart-box {
+    position: relative; height: 380px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden;
+  }
+  .chart-box .tv-slot { width: 100%; height: 100%; }
+  .chart-box .wm {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 2.6rem; font-weight: 700; letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.27); pointer-events: none; z-index: 5;
+  }
+  .chart-box .placeholder {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 0.85rem;
+  }
   /* 履歴 */
   .hist-controls { margin-bottom: 10px; }
   select {
@@ -104,6 +141,8 @@
 <header>
   <h1>FX Daily Levels</h1>
   <span class="meta" id="meta-date">読み込み中...</span>
+  <span class="meta" id="meta-live"></span>
+  <button class="refresh-btn" id="refresh-btn" onclick="fetchIntraday(true)">当日データ更新</button>
 </header>
 
 <div class="error-banner" id="error-banner"></div>
@@ -111,8 +150,11 @@
 <h2>市場心理</h2>
 <div class="sentiment-row" id="sentiment"><div class="loading">読み込み中...</div></div>
 
-<h2>デイリーレベル（前日確定足ベース）</h2>
+<h2>デイリーレベル（前日確定足 + 当日リアルタイム）</h2>
 <div class="pair-grid" id="pairs"><div class="loading">読み込み中...</div></div>
+
+<h2>1時間足チャート</h2>
+<div class="chart-grid" id="charts"></div>
 
 <h2>履歴</h2>
 <div class="hist-controls">
@@ -122,26 +164,38 @@
 
 <h2>本日の経済指標・要人発言（JST）</h2>
 <div class="event-box">
-  <!--
-    ▼ investing.com 公式ウィジェット ▼
-    表示言語やタイムゾーンが合わない場合は、以下のページで公式の埋め込みコードを
-    生成し、この <iframe> を丸ごと差し替えてください（SETUP.md 手順7参照）:
-    https://jp.investing.com/webmaster-tools/economic-calendar
-  -->
- <iframe src="https://sslecal2.investing.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&category=_employment,_economicActivity,_inflation,_credit,_centralBanks,_confidenceIndex,_balance,_Bonds&importance=2,3&features=datepicker,timezone,timeselector&countries=5,4,25,6,12,17,72,37,35&calType=day&timeZone=29&lang=11" width="650" height="467" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe><div class="poweredBy" style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 11px;color: #333333;text-decoration: none;">金融ポータルサイト、<a href="https://jp.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;" class="underline_link">Investing.com 日本</a>によって提供されている経済カレンダー</span></div>
+  <iframe src="https://sslecal2.investing.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&category=_employment,_economicActivity,_inflation,_credit,_centralBanks,_confidenceIndex,_balance,_Bonds&importance=2,3&features=datepicker,timezone,timeselector&countries=5,4,25,6,12,17,72,37,35&calType=day&timeZone=29&lang=11" width="650" height="500" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
+  <div class="poweredBy" style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 11px;color: #8b949e;text-decoration: none;">金融ポータルサイト、<a href="https://jp.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px;color: #58a6ff; font-weight: bold;" class="underline_link">Investing.com 日本</a>によって提供されている経済カレンダー</span></div>
   <div>
     <a class="link-btn" href="https://fxshihyo.com/" target="_blank" rel="noopener">fxshihyo.com で確認 →</a>
   </div>
 </div>
 
 <script>
+// ============================================================
+// ▼▼▼ ここにTwelve DataのAPIキーを貼り付けてください ▼▼▼
+const TD_API_KEY = "9af9f8cc325b46de9ef246a39512fe8c";
+// ▲▲▲（当日の現在値・高安の取得に使用。空のままでも前日データは表示されます）
+// ============================================================
+
 const PAIR_ORDER = ["USDJPY","EURUSD","GBPUSD","EURJPY","AUDUSD","EURGBP","XAUUSD"];
+const TD_SYMBOLS = {
+  USDJPY: "USD/JPY", EURUSD: "EUR/USD", GBPUSD: "GBP/USD",
+  EURJPY: "EUR/JPY", AUDUSD: "AUD/USD", EURGBP: "EUR/GBP", XAUUSD: "XAU/USD",
+};
+const TV_SYMBOLS = {
+  USDJPY: "OANDA:USDJPY", EURUSD: "OANDA:EURUSD", GBPUSD: "OANDA:GBPUSD",
+  EURJPY: "OANDA:EURJPY", AUDUSD: "OANDA:AUDUSD", EURGBP: "OANDA:EURGBP", XAUUSD: "OANDA:XAUUSD",
+};
 const SENT_ORDER = ["DXY","US10Y","VIX"];
 const HIST_DAYS = 15;
-let historyCache = {}; // date -> daily json
+let historyCache = {};
+let dailyData = null;     // latest.json（前日確定データ）
+let intraday = {};        // 当日クオート {code: {price, high, low, time}}
+let lastQuoteAt = 0;
 
 function fmt(n, code) {
-  if (n === null || n === undefined) return "-";
+  if (n === null || n === undefined || isNaN(n)) return "-";
   return n.toLocaleString("en-US", { minimumFractionDigits: dec(code), maximumFractionDigits: dec(code) });
 }
 function dec(code) {
@@ -151,11 +205,12 @@ function dec(code) {
 }
 
 async function loadJSON(path) {
-  const res = await fetch(path + "?t=" + Date.now()); // キャッシュ回避
+  const res = await fetch(path + "?t=" + Date.now());
   if (!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
   return res.json();
 }
 
+// ---- 市場心理 ----
 function renderSentiment(data) {
   const el = document.getElementById("sentiment");
   el.innerHTML = "";
@@ -178,11 +233,13 @@ function renderSentiment(data) {
   }
 }
 
-function renderPairs(data) {
+// ---- ペアカード（前日レベル + 当日データ + R2/S2 + ADR消化率）----
+function renderPairs() {
   const el = document.getElementById("pairs");
   el.innerHTML = "";
   for (const code of PAIR_ORDER) {
-    const p = data.pairs?.[code];
+    const p = dailyData?.pairs?.[code];
+    const q = intraday[code];
     const div = document.createElement("div");
     div.className = "p-card";
     if (!p) {
@@ -190,25 +247,165 @@ function renderPairs(data) {
       el.appendChild(div);
       continue;
     }
-    const pips = (v, pv) => pv !== null && pv !== undefined ? ` <span class="pips">(${pv}p)</span>` : "";
+    // R2/S2（クラシック方式: 前日レンジをPivotに加減）
+    const range = p.prevHigh - p.prevLow;
+    const r2 = p.pivot + range;
+    const s2 = p.pivot - range;
+    const pips = (pv) => pv !== null && pv !== undefined ? ` <span class="pips">(${pv}p)</span>` : "";
+
+    // 当日ブロック
+    let nowHtml = `<span class="p-now"><small>前日終値</small>${fmt(p.prevClose, code)}</span>`;
+    let todayHtml = "";
+    let adrHtml = "";
+    if (q) {
+      const chg = q.price - p.prevClose;
+      const chgCls = chg >= 0 ? "up" : "down";
+      const chgSign = chg >= 0 ? "+" : "";
+      nowHtml = `<span class="p-now ${chgCls}"><small>現在値</small>${fmt(q.price, code)}</span>`;
+      todayHtml = `
+        <div class="today-line">
+          <span>当日高値 <b>${fmt(q.high, code)}</b></span>
+          <span class="${chgCls}">${chgSign}${fmt(chg, code)}</span>
+          <span>当日安値 <b>${fmt(q.low, code)}</b></span>
+        </div>`;
+      // ADR消化率 = 当日値幅 / ADR20
+      if (p.adr20 > 0) {
+        const usePct = ((q.high - q.low) / p.adr20) * 100;
+        const width = Math.min(usePct, 100);
+        const color = usePct < 50 ? "var(--green)" : usePct < 85 ? "var(--gold)" : "var(--red)";
+        adrHtml = `
+          <div class="adr-use">
+            <div class="bar-label"><span>ADR消化率</span><b>${usePct.toFixed(0)}%</b></div>
+            <div class="bar-track"><div class="bar-fill" style="width:${width}%; background:${color}"></div></div>
+          </div>`;
+      }
+    }
+
     div.innerHTML = `
       <div class="p-head">
         <span class="p-name">${code}</span>
-        <span class="p-close"><small>NY終値</small>${fmt(p.prevClose, code)}</span>
+        ${nowHtml}
       </div>
+      ${todayHtml}
+      ${adrHtml}
       <table class="levels">
         <tr><td>前日高値</td><td>${fmt(p.prevHigh, code)}</td></tr>
         <tr><td>前日安値</td><td>${fmt(p.prevLow, code)}</td></tr>
+        <tr><td>NY終値</td><td>${fmt(p.prevClose, code)}</td></tr>
+        <tr><td class="r2">R2</td><td class="r2">${fmt(r2, code)}</td></tr>
         <tr><td class="r1">R1</td><td class="r1">${fmt(p.r1, code)}</td></tr>
         <tr><td class="pv">Pivot</td><td class="pv">${fmt(p.pivot, code)}</td></tr>
         <tr><td class="s1">S1</td><td class="s1">${fmt(p.s1, code)}</td></tr>
-        <tr><td>ADR(20)</td><td>${fmt(p.adr20, code)}${pips(p.adr20, p.adr20Pips)}</td></tr>
-        <tr><td>ATR(14)</td><td>${fmt(p.atr14, code)}${pips(p.atr14, p.atr14Pips)}</td></tr>
+        <tr><td class="s2">S2</td><td class="s2">${fmt(s2, code)}</td></tr>
+        <tr><td>ADR(20)</td><td>${fmt(p.adr20, code)}${pips(p.adr20Pips)}</td></tr>
+        <tr><td>ATR(14)</td><td>${fmt(p.atr14, code)}${pips(p.atr14Pips)}</td></tr>
       </table>`;
     el.appendChild(div);
   }
 }
 
+// ---- 当日クオート（Twelve Data /quote バッチ取得）----
+async function fetchIntraday(manual = false) {
+  if (!TD_API_KEY || TD_API_KEY.includes("ここに")) {
+    document.getElementById("meta-live").textContent = "（当日データ: APIキー未設定）";
+    return;
+  }
+  // 無料枠(8クレジット/分)保護: 60秒クールダウン
+  const now = Date.now();
+  if (now - lastQuoteAt < 60000) {
+    if (manual) alert("更新は1分間隔でお願いします（API無料枠の保護のため）");
+    return;
+  }
+  lastQuoteAt = now;
+  const btn = document.getElementById("refresh-btn");
+  btn.disabled = true;
+  setTimeout(() => { btn.disabled = false; }, 60000);
+
+  try {
+    const symbols = PAIR_ORDER.map((c) => TD_SYMBOLS[c]).join(",");
+    const res = await fetch(`https://api.twelvedata.com/quote?symbol=${encodeURIComponent(symbols)}&apikey=${TD_API_KEY}`);
+    const json = await res.json();
+    let okCount = 0;
+    for (const code of PAIR_ORDER) {
+      const q = json[TD_SYMBOLS[code]];
+      if (q && q.status !== "error" && q.close) {
+        intraday[code] = {
+          price: parseFloat(q.close),
+          high: parseFloat(q.high),
+          low: parseFloat(q.low),
+        };
+        okCount++;
+      }
+    }
+    if (okCount > 0) {
+      const t = new Date().toLocaleTimeString("ja-JP", { timeZone: "Asia/Tokyo", hour: "2-digit", minute: "2-digit" });
+      document.getElementById("meta-live").textContent = `当日データ更新: ${t} JST`;
+      renderPairs();
+    } else {
+      document.getElementById("meta-live").textContent = "（当日データ取得失敗: " + (json.message || json.code || "不明") + "）";
+    }
+  } catch (e) {
+    document.getElementById("meta-live").textContent = "（当日データ取得失敗）";
+  }
+}
+
+// ---- 1時間足チャート（遅延読み込み）----
+let tvScriptLoaded = null;
+function loadTvScript() {
+  if (tvScriptLoaded) return tvScriptLoaded;
+  tvScriptLoaded = new Promise((resolve) => {
+    const s = document.createElement("script");
+    s.src = "https://s3.tradingview.com/tv.js";
+    s.onload = resolve;
+    document.head.appendChild(s);
+  });
+  return tvScriptLoaded;
+}
+
+function setupCharts() {
+  const grid = document.getElementById("charts");
+  for (const code of PAIR_ORDER) {
+    const box = document.createElement("div");
+    box.className = "chart-box";
+    box.dataset.code = code;
+    box.innerHTML = `
+      <div class="tv-slot" id="tv_${code}"></div>
+      <div class="wm">${code}</div>
+      <div class="placeholder">スクロールでチャート読み込み...</div>`;
+    grid.appendChild(box);
+  }
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      const box = entry.target;
+      observer.unobserve(box);
+      initChart(box.dataset.code, box);
+    }
+  }, { rootMargin: "200px" });
+  document.querySelectorAll(".chart-box").forEach((b) => observer.observe(b));
+}
+
+async function initChart(code, box) {
+  await loadTvScript();
+  const ph = box.querySelector(".placeholder");
+  if (ph) ph.remove();
+  new TradingView.widget({
+    container_id: `tv_${code}`,
+    symbol: TV_SYMBOLS[code],
+    interval: "60",
+    range: "1M",
+    timezone: "Asia/Tokyo",
+    theme: "dark",
+    style: "1",
+    locale: "ja",
+    autosize: true,
+    hide_side_toolbar: true,
+    allow_symbol_change: false,
+    save_image: false,
+  });
+}
+
+// ---- 履歴 ----
 async function renderHistory(pairCode) {
   const table = document.getElementById("hist-table");
   table.innerHTML = `<tr><td class="loading">読み込み中...</td></tr>`;
@@ -241,8 +438,8 @@ async function renderHistory(pairCode) {
   }
 }
 
+// ---- 初期化 ----
 async function init() {
-  // 履歴セレクタ
   const sel = document.getElementById("hist-pair");
   for (const c of PAIR_ORDER) {
     const o = document.createElement("option");
@@ -251,25 +448,26 @@ async function init() {
   }
   sel.addEventListener("change", () => renderHistory(sel.value));
 
+  setupCharts();
+
   try {
-    const data = await loadJSON("data/latest.json");
+    dailyData = await loadJSON("data/latest.json");
     document.getElementById("meta-date").textContent =
-      `${data.date}（前日足: ${data.sessionDate} NYクローズ）`;
-    if (data.errors && data.errors.length > 0) {
+      `${dailyData.date}（前日足: ${dailyData.sessionDate} NYクローズ）`;
+    if (dailyData.errors && dailyData.errors.length > 0) {
       const b = document.getElementById("error-banner");
       b.style.display = "block";
-      b.textContent = "一部データの取得に失敗しています: " + data.errors.join(" / ");
+      b.textContent = "一部データの取得に失敗しています: " + dailyData.errors.join(" / ");
     }
-    renderSentiment(data);
-    renderPairs(data);
+    renderSentiment(dailyData);
+    renderPairs();
     renderHistory(sel.value);
+    fetchIntraday();
   } catch (e) {
     document.getElementById("meta-date").textContent = "データ未生成";
     const b = document.getElementById("error-banner");
     b.style.display = "block";
-    b.textContent =
-      "data/latest.json が見つかりません。GitHub Actionsをまだ実行していない場合は、" +
-      "リポジトリの Actions タブから「Daily FX Data」を手動実行してください（SETUP.md 手順6）。";
+    b.textContent = "data/latest.json が見つかりません。Actionsタブから「Daily FX Data」を実行してください。";
   }
 }
 init();
