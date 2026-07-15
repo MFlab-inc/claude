@@ -27,7 +27,7 @@ const PAIRS = [
   { code: "EURJPY", td: "EUR/JPY", pip: 0.01,   digits: 3 },
   { code: "AUDUSD", td: "AUD/USD", pip: 0.0001, digits: 5 },
   { code: "EURGBP", td: "EUR/GBP", pip: 0.0001, digits: 5 },
-  { code: "XAUUSD", td: "XAU/USD", pip: null,   digits: 2 },
+  { code: "XAUUSD", td: "XAU/USD", pip: 0.1,   digits: 2 },
 ];
 
 // ---- 市場心理（Yahoo Finance 非公式API）----
