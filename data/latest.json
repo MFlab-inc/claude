@@ -1,6 +1,6 @@
 {
   "date": "2026-07-17",
-  "generatedAt": "2026-07-17T00:12:09.393Z",
+  "generatedAt": "2026-07-17T03:32:38.340Z",
   "sessionDate": "2026-07-16",
   "pairs": {
     "USDJPY": {
@@ -105,17 +105,17 @@
       "s1": 3940.96,
       "r2": 4104.5,
       "s2": 3905.14,
-      "adr20Pips": 697,
-      "atr14Pips": 762
+      "adr20Pips": null,
+      "atr14Pips": null
     }
   },
   "sentiment": {
     "DXY": {
       "label": "ドル指数",
-      "value": 100.71,
-      "prev": 100.5,
-      "change": 0.21,
-      "changePct": 0.21
+      "value": 100.76,
+      "prev": 100.73,
+      "change": 0.03,
+      "changePct": 0.03
     },
     "US10Y": {
       "label": "米10年債利回り",
