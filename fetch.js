@@ -27,7 +27,7 @@ const PAIRS = [
   { code: "EURJPY", td: "EUR/JPY", pip: 0.01,   digits: 3 },
   { code: "AUDUSD", td: "AUD/USD", pip: 0.0001, digits: 5 },
   { code: "EURGBP", td: "EUR/GBP", pip: 0.0001, digits: 5 },
-  { code: "XAUUSD", td: "XAU/USD", pip: 0.1,   digits: 2 },
+  { code: "XAUUSD", td: "XAU/USD", pip: null,   digits: 2 },
 ];
 
 // ---- 市場心理（Yahoo Finance 非公式API）----
@@ -302,6 +302,8 @@ async function main() {
       atr14_pips: d.atr14Pips,
       atr_sl_1_0: round(d.atr14 * 1.0, p.digits), // SL目安レンジ（事実値: ATR×1.0〜1.5）
       atr_sl_1_5: round(d.atr14 * 1.5, p.digits),
+      // 前日値幅 ÷ ADR20（%）: 前日にADRをどれだけ使ったか
+      previous_day_range_pct: d.adr20 > 0 ? round(((d.prevHigh - d.prevLow) / d.adr20) * 100, 1) : null,
       pivot: d.pivot,
       r1: d.r1, r2: d.r2,
       s1: d.s1, s2: d.s2,
