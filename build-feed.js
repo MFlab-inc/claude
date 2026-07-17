@@ -31,6 +31,12 @@ const PAIR_ORDER = ["USDJPY","EURUSD","GBPUSD","EURJPY","AUDUSD","EURGBP","XAUUS
 // ---- サマリー（テキスト表）----
 let summary = "";
 const ms = daily.market_sentiment || {};
+const sess = intra?.market_session;
+if (sess) {
+  summary += `【Market Session】(as_of: ${sess.as_of})\n`;
+  summary += `東京: ${sess.tokyo} / ロンドン: ${sess.london} / NY: ${sess.new_york}`;
+  summary += `（オープンJST: 東京 ${sess.opens_jst.tokyo} / ロンドン ${sess.opens_jst.london} / NY ${sess.opens_jst.new_york}）\n\n`;
+}
 summary += `【Market Sentiment】(as_of: ${daily.as_of})\n`;
 summary += `DXY: ${ms.dxy} (${ms.dxy_change_pct}%) | US10Y: ${ms.us10y}% (${ms.us10y_change >= 0 ? "+" : ""}${ms.us10y_change}) | VIX: ${ms.vix} (${ms.vix_change_pct}%)\n\n`;
 
@@ -48,7 +54,8 @@ for (const code of PAIR_ORDER) {
   } else {
     summary += `  （当日データなし）\n`;
   }
-  summary += `  前日: 高値 ${d.prev_high} / 安値 ${d.prev_low} / NY終値 ${d.prev_close_ny}\n`;
+  summary += `  前日: 高値 ${d.prev_high} / 安値 ${d.prev_low} / NY終値 ${d.prev_close_ny}` +
+    (d.previous_day_range_pct != null ? ` | 前日レンジ/ADR: ${d.previous_day_range_pct}%` : "") + `\n`;
   summary += `  Pivot: ${d.pivot} | R1 ${d.r1} / R2 ${d.r2} | S1 ${d.s1} / S2 ${d.s2}\n`;
   summary += `  ADR20: ${d.adr20}${d.adr20_pips ? ` (${d.adr20_pips}p)` : ""} | ATR14: ${d.atr14}${d.atr14_pips ? ` (${d.atr14_pips}p)` : ""} | ATR_SL目安: ${d.atr_sl_1_0}〜${d.atr_sl_1_5}\n`;
 }
@@ -75,7 +82,7 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
 <h1>FX Daily Levels - GPT Feed</h1>
-<p>ページ生成時刻: ${esc(nowJst)} / timezone: Asia/Tokyo</p>
+<p>feed_generated_at: ${esc(nowJst)} / timezone: Asia/Tokyo</p>
 <p>daily as_of: ${esc(daily.as_of)} | intraday as_of: ${esc(intra?.as_of ?? "なし")} | calendar as_of: ${esc(cal?.as_of ?? "なし")}</p>
 <p>注意: 事実データのみ。トレード判定は含まない。intradayは最大1時間前の値の場合がある。</p>
 
@@ -98,7 +105,7 @@ fs.writeFileSync(path.join(dataDir, "gpt-feed.html"), html);
 
 // ---- TXT版（フォールバック用・プレーンテキスト）----
 const txt = `FX Daily Levels - GPT Feed (plain text)
-ページ生成時刻: ${nowJst} / timezone: Asia/Tokyo
+feed_generated_at: ${nowJst} / timezone: Asia/Tokyo
 daily as_of: ${daily.as_of} | intraday as_of: ${intra?.as_of ?? "なし"} | calendar as_of: ${cal?.as_of ?? "なし"}
 注意: 事実データのみ。トレード判定は含まない。intradayは最大1時間前の値の場合がある。
 
@@ -129,7 +136,7 @@ const csvEsc = (v) => {
     "adr_used_pct","adr_used","adr_remaining","price_zone",
     "prev_high","prev_low","prev_close_ny",
     "pivot","r1","r2","s1","s2",
-    "adr20","adr20_pips","atr14","atr14_pips","atr_sl_1_0","atr_sl_1_5",
+    "adr20","adr20_pips","atr14","atr14_pips","atr_sl_1_0","atr_sl_1_5","prev_day_range_pct",
     "dxy","dxy_change_pct","us10y","us10y_change","vix","vix_change_pct",
     "daily_as_of","intraday_as_of",
   ];
@@ -143,7 +150,7 @@ const csvEsc = (v) => {
       q.adr_used_pct, q.adr_used, q.adr_remaining, q.price_zone,
       d.prev_high, d.prev_low, d.prev_close_ny,
       d.pivot, d.r1, d.r2, d.s1, d.s2,
-      d.adr20, d.adr20_pips, d.atr14, d.atr14_pips, d.atr_sl_1_0, d.atr_sl_1_5,
+      d.adr20, d.adr20_pips, d.atr14, d.atr14_pips, d.atr_sl_1_0, d.atr_sl_1_5, d.previous_day_range_pct,
       ms.dxy, ms.dxy_change_pct, ms.us10y, ms.us10y_change, ms.vix, ms.vix_change_pct,
       daily.as_of, intra?.as_of ?? "",
     ].map(csvEsc).join(","));
@@ -155,7 +162,7 @@ const csvEsc = (v) => {
 {
   const header = [
     "date","pair","session_date","prev_high","prev_low","close_ny",
-    "adr20","atr14","pivot","r1","r2","s1","s2",
+    "adr20","atr14","pivot","r1","r2","s1","s2","range_pct",
   ];
   const rows = [header.join(",")];
   const idx = readJson("index.json");
@@ -169,9 +176,10 @@ const csvEsc = (v) => {
       const range = p.prevHigh - p.prevLow;
       const r2 = p.r2 ?? Number((p.pivot + range).toFixed(6));
       const s2 = p.s2 ?? Number((p.pivot - range).toFixed(6));
+      const rangePct = p.adr20 > 0 ? Number((((p.prevHigh - p.prevLow) / p.adr20) * 100).toFixed(1)) : "";
       rows.push([
         dt, code, p.sessionDate, p.prevHigh, p.prevLow, p.prevClose,
-        p.adr20, p.atr14, p.pivot, p.r1, r2, p.s1, s2,
+        p.adr20, p.atr14, p.pivot, p.r1, r2, p.s1, s2, rangePct,
       ].map(csvEsc).join(","));
     }
   }
