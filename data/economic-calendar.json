@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-07-16T09:58:30+09:00",
-  "date": "2026-07-16",
+  "as_of": "2026-07-17T09:12:09+09:00",
+  "date": "2026-07-17",
   "timezone": "Asia/Tokyo",
   "source": "Forex Factory calendar feed",
   "filters": {
@@ -21,49 +21,31 @@
   },
   "events": [
     {
-      "time_jst": "15:00",
-      "datetime_jst": "2026-07-16T15:00:00+09:00",
-      "currency": "GBP",
-      "impact": "High",
-      "event": "GDP m/m",
-      "forecast": "0.0%",
-      "previous": "-0.1%"
-    },
-    {
-      "time_jst": "21:30",
-      "datetime_jst": "2026-07-16T21:30:00+09:00",
+      "time_jst": "10:00",
+      "datetime_jst": "2026-07-17T10:00:00+09:00",
       "currency": "USD",
       "impact": "Medium",
-      "event": "Core Retail Sales m/m",
-      "forecast": "0.0%",
-      "previous": "0.8%"
+      "event": "President Trump Speaks",
+      "forecast": null,
+      "previous": null
     },
     {
-      "time_jst": "21:30",
-      "datetime_jst": "2026-07-16T21:30:00+09:00",
+      "time_jst": "23:00",
+      "datetime_jst": "2026-07-17T23:00:00+09:00",
       "currency": "USD",
       "impact": "Medium",
-      "event": "Philly Fed Manufacturing Index",
-      "forecast": "12.7",
-      "previous": "10.3"
+      "event": "Prelim UoM Consumer Sentiment",
+      "forecast": "51.0",
+      "previous": "48.9"
     },
     {
-      "time_jst": "21:30",
-      "datetime_jst": "2026-07-16T21:30:00+09:00",
+      "time_jst": "23:00",
+      "datetime_jst": "2026-07-17T23:00:00+09:00",
       "currency": "USD",
       "impact": "Medium",
-      "event": "Retail Sales m/m",
-      "forecast": "0.2%",
-      "previous": "0.9%"
-    },
-    {
-      "time_jst": "21:30",
-      "datetime_jst": "2026-07-16T21:30:00+09:00",
-      "currency": "USD",
-      "impact": "Medium",
-      "event": "Unemployment Claims",
-      "forecast": "216K",
-      "previous": "215K"
+      "event": "Prelim UoM Inflation Expectations",
+      "forecast": null,
+      "previous": "4.6%"
     }
   ]
 }
