@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-07-17T12:32:38+09:00",
-  "date": "2026-07-17",
+  "as_of": "2026-07-18T09:09:13+09:00",
+  "date": "2026-07-18",
   "timezone": "Asia/Tokyo",
   "source": "Forex Factory calendar feed",
   "filters": {
@@ -19,33 +19,5 @@
       "Medium"
     ]
   },
-  "events": [
-    {
-      "time_jst": "10:00",
-      "datetime_jst": "2026-07-17T10:00:00+09:00",
-      "currency": "USD",
-      "impact": "Medium",
-      "event": "President Trump Speaks",
-      "forecast": null,
-      "previous": null
-    },
-    {
-      "time_jst": "23:00",
-      "datetime_jst": "2026-07-17T23:00:00+09:00",
-      "currency": "USD",
-      "impact": "Medium",
-      "event": "Prelim UoM Consumer Sentiment",
-      "forecast": "51.0",
-      "previous": "48.9"
-    },
-    {
-      "time_jst": "23:00",
-      "datetime_jst": "2026-07-17T23:00:00+09:00",
-      "currency": "USD",
-      "impact": "Medium",
-      "event": "Prelim UoM Inflation Expectations",
-      "forecast": null,
-      "previous": "4.6%"
-    }
-  ]
+  "events": []
 }
