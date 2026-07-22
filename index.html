@@ -142,7 +142,7 @@
   <h1>FX Daily Levels</h1>
   <span class="meta" id="meta-date">読み込み中...</span>
   <span class="meta" id="meta-live"></span>
-  <button class="refresh-btn" id="refresh-btn" onclick="fetchIntraday(true)">当日データ更新</button>
+  <button class="refresh-btn" id="refresh-btn" onclick="fetchIntraday(true)">再読み込み</button>
 </header>
 
 <div class="error-banner" id="error-banner"></div>
@@ -172,17 +172,7 @@
 </div>
 
 <script>
-// ============================================================
-// ▼▼▼ ここにTwelve DataのAPIキーを貼り付けてください ▼▼▼
-const TD_API_KEY = "9af9f8cc325b46de9ef246a39512fe8c";
-// ▲▲▲（当日の現在値・高安の取得に使用。空のままでも前日データは表示されます）
-// ============================================================
-
 const PAIR_ORDER = ["USDJPY","EURUSD","GBPUSD","EURJPY","AUDUSD","EURGBP","USDCAD","XAUUSD"];
-const TD_SYMBOLS = {
-  USDJPY: "USD/JPY", EURUSD: "EUR/USD", GBPUSD: "GBP/USD",
-  EURJPY: "EUR/JPY", AUDUSD: "AUD/USD", EURGBP: "EUR/GBP", USDCAD: "USD/CAD", XAUUSD: "XAU/USD",
-};
 const TV_SYMBOLS = {
   USDJPY: "OANDA:USDJPY", EURUSD: "OANDA:EURUSD", GBPUSD: "OANDA:GBPUSD",
   EURJPY: "OANDA:EURJPY", AUDUSD: "OANDA:AUDUSD", EURGBP: "OANDA:EURGBP", USDCAD: "OANDA:USDCAD", XAUUSD: "OANDA:XAUUSD",
@@ -304,48 +294,30 @@ function renderPairs() {
   }
 }
 
-// ---- 当日クオート（Twelve Data /quote バッチ取得）----
+// ---- 当日データ（data/intraday.json を読取。30分ごとにActionsが自動更新）----
 async function fetchIntraday(manual = false) {
-  if (!TD_API_KEY || TD_API_KEY.includes("ここに")) {
-    document.getElementById("meta-live").textContent = "（当日データ: APIキー未設定）";
-    return;
-  }
-  // 無料枠(8クレジット/分)保護: 60秒クールダウン
-  const now = Date.now();
-  if (now - lastQuoteAt < 60000) {
-    if (manual) alert("更新は1分間隔でお願いします（API無料枠の保護のため）");
-    return;
-  }
-  lastQuoteAt = now;
   const btn = document.getElementById("refresh-btn");
   btn.disabled = true;
-  setTimeout(() => { btn.disabled = false; }, 60000);
-
+  setTimeout(() => { btn.disabled = false; }, 5000);
   try {
-    const symbols = PAIR_ORDER.map((c) => TD_SYMBOLS[c]).join(",");
-    const res = await fetch(`https://api.twelvedata.com/quote?symbol=${encodeURIComponent(symbols)}&apikey=${TD_API_KEY}`);
-    const json = await res.json();
+    const j = await loadJSON("data/intraday.json");
     let okCount = 0;
     for (const code of PAIR_ORDER) {
-      const q = json[TD_SYMBOLS[code]];
-      if (q && q.status !== "error" && q.close) {
-        intraday[code] = {
-          price: parseFloat(q.close),
-          high: parseFloat(q.high),
-          low: parseFloat(q.low),
-        };
+      const q = j.pairs?.[code];
+      if (q && q.price != null) {
+        intraday[code] = { price: q.price, high: q.today_high, low: q.today_low };
         okCount++;
       }
     }
     if (okCount > 0) {
-      const t = new Date().toLocaleTimeString("ja-JP", { timeZone: "Asia/Tokyo", hour: "2-digit", minute: "2-digit" });
-      document.getElementById("meta-live").textContent = `当日データ更新: ${t} JST`;
+      const t = (j.as_of || "").slice(11, 16);
+      document.getElementById("meta-live").textContent = `当日データ: ${t} JST時点（30分ごと自動更新）`;
       renderPairs();
     } else {
-      document.getElementById("meta-live").textContent = "（当日データ取得失敗: " + (json.message || json.code || "不明") + "）";
+      document.getElementById("meta-live").textContent = "（当日データなし）";
     }
   } catch (e) {
-    document.getElementById("meta-live").textContent = "（当日データ取得失敗）";
+    document.getElementById("meta-live").textContent = "（当日データ未生成: Intraday Snapshot実行後に表示されます）";
   }
 }
 
