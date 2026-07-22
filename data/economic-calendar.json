@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-07-21T09:08:53+09:00",
-  "date": "2026-07-21",
+  "as_of": "2026-07-22T09:06:45+09:00",
+  "date": "2026-07-22",
   "timezone": "Asia/Tokyo",
   "source": "Forex Factory calendar feed",
   "filters": {
@@ -22,21 +22,12 @@
   "events": [
     {
       "time_jst": "15:00",
-      "datetime_jst": "2026-07-21T15:00:00+09:00",
+      "datetime_jst": "2026-07-22T15:00:00+09:00",
       "currency": "GBP",
       "impact": "High",
-      "event": "Claimant Count Change",
-      "forecast": "29.4K",
-      "previous": "31.2K"
-    },
-    {
-      "time_jst": "15:00",
-      "datetime_jst": "2026-07-21T15:00:00+09:00",
-      "currency": "GBP",
-      "impact": "Medium",
-      "event": "Average Earnings Index 3m/y",
-      "forecast": "4.5%",
-      "previous": "4.4%"
+      "event": "CPI y/y",
+      "forecast": "2.7%",
+      "previous": "2.8%"
     }
   ]
 }
