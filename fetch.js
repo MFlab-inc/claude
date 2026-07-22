@@ -27,6 +27,7 @@ const PAIRS = [
   { code: "EURJPY", td: "EUR/JPY", pip: 0.01,   digits: 3 },
   { code: "AUDUSD", td: "AUD/USD", pip: 0.0001, digits: 5 },
   { code: "EURGBP", td: "EUR/GBP", pip: 0.0001, digits: 5 },
+  { code: "USDCAD", td: "USD/CAD", pip: 0.0001, digits: 5 },
   { code: "XAUUSD", td: "XAU/USD", pip: null,   digits: 2 },
 ];
 
@@ -185,6 +186,7 @@ async function fetchCalendar(todayJst) {
       event: e.title,
       forecast: e.forecast || null,
       previous: e.previous || null,
+      scheduled_time_passed: dt.getTime() <= Date.now(), // 発表予定時刻を過ぎたか（事実）
     });
   }
   out.sort((a, b) => a.time_jst.localeCompare(b.time_jst));
@@ -317,6 +319,7 @@ async function main() {
     date: today,
     timezone: "Asia/Tokyo",
     source: "Forex Factory calendar feed",
+    actuals_note: "本フィードのデータ源(FF公開フィード)は実績値(actual)を含まない。scheduled_time_passed=trueのイベントの実績値は別ソースで確認すること。",
     filters: { currencies: CAL_CURRENCIES, impacts: CAL_IMPACTS },
     events: calendar,
   }, null, 2));
