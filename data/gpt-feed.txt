@@ -1,90 +1,90 @@
 FX Daily Levels - GPT Feed (plain text)
-feed_generated_at: 2026-07-23T11:18:07+09:00 / timezone: Asia/Tokyo
-daily as_of: 2026-07-23T09:13:15+09:00 | intraday as_of: 2026-07-23T11:18:06+09:00 | calendar as_of: 2026-07-23T11:18:06+09:00
+feed_generated_at: 2026-07-23T12:38:52+09:00 / timezone: Asia/Tokyo
+daily as_of: 2026-07-23T09:13:15+09:00 | intraday as_of: 2026-07-23T12:38:51+09:00 | calendar as_of: 2026-07-23T12:38:51+09:00
 注意: 事実データのみ。トレード判定は含まない。intradayは最大1時間前の値の場合がある。
 
 ===== サマリー =====
-【Market Session】(as_of: 2026-07-23T11:18:06+09:00)
+【Market Session】(as_of: 2026-07-23T12:38:51+09:00)
 東京: open / ロンドン: closed / NY: closed（オープンJST: 東京 09:00 / ロンドン 16:00 / NY 21:00）
 
 【Market Sentiment】(as_of: 2026-07-23T09:13:15+09:00)
 DXY: 101.12 (-0.06%) | US10Y: 4.657% (+0.029) | VIX: 16.64 (-2.4%)
 
-【Pairs】 daily levels as_of: 2026-07-23T09:13:15+09:00 / intraday as_of: 2026-07-23T11:18:06+09:00
+【Pairs】 daily levels as_of: 2026-07-23T09:13:15+09:00 / intraday as_of: 2026-07-23T12:38:51+09:00
 
 [USDJPY]
-  現在値: 163.066 (前日終値比 -0.095)
+  現在値: 163.059 (前日終値比 -0.102)
   当日高値: 163.187 / 当日安値: 163.005
   ADR消化: 26.3% (使用 0.181 / 残り 0.507)
-  price_zone: S1_to_Pivot | R1まで 0.304 / Pivotまで 0.038 / S1まで -0.171
+  price_zone: S1_to_Pivot | R1まで 0.311 / Pivotまで 0.045 / S1まで -0.164
   前日: 高値 163.313 / 安値 162.837 / NY終値 163.161 | 前日レンジ/ADR: 69.2%
   Pivot: 163.104 | R1 163.37 / R2 163.579 | S1 162.895 / S2 162.629
   ADR20: 0.688 (69p) | ATR14: 0.637 (64p) | ATR_SL目安: 0.637〜0.956
 
 [EURUSD]
-  現在値: 1.14189 (前日終値比 +0.00061)
-  当日高値: 1.14207 / 当日安値: 1.1406
-  ADR消化: 28.2% (使用 0.00147 / 残り 0.00374)
-  price_zone: Pivot_to_R1 | R1まで 0.00048 / Pivotまで -0.0008 / S1まで -0.0019
+  現在値: 1.14291 (前日終値比 +0.00163)
+  当日高値: 1.14299 / 当日安値: 1.1406
+  ADR消化: 45.9% (使用 0.00239 / 残り 0.00282)
+  price_zone: R1_to_R2 | R1まで -0.00054 / Pivotまで -0.00182 / S1まで -0.00292
   前日: 高値 1.14218 / 安値 1.1398 / NY終値 1.14128 | 前日レンジ/ADR: 45.7%
   Pivot: 1.14109 | R1 1.14237 / R2 1.14347 | S1 1.13999 / S2 1.13871
   ADR20: 0.00521 (52p) | ATR14: 0.00517 (52p) | ATR_SL目安: 0.00517〜0.00775
 
 [GBPUSD]
-  現在値: 1.33846 (前日終値比 +0.00085)
-  当日高値: 1.33865 / 当日安値: 1.3368
-  ADR消化: 24.7% (使用 0.00185 / 残り 0.00565)
-  price_zone: Pivot_to_R1 | R1まで 0.0011 / Pivotまで -0.00092 / S1まで -0.00286
+  現在値: 1.33902 (前日終値比 +0.00141)
+  当日高値: 1.3391 / 当日安値: 1.3368
+  ADR消化: 30.7% (使用 0.0023 / 残り 0.0052)
+  price_zone: Pivot_to_R1 | R1まで 0.00054 / Pivotまで -0.00148 / S1まで -0.00342
   前日: 高値 1.33949 / 安値 1.33553 / NY終値 1.33761 | 前日レンジ/ADR: 52.8%
   Pivot: 1.33754 | R1 1.33956 / R2 1.3415 | S1 1.3356 / S2 1.33358
   ADR20: 0.0075 (75p) | ATR14: 0.0077 (77p) | ATR_SL目安: 0.0077〜0.01155
 
 [EURJPY]
-  現在値: 186.203 (前日終値比 -0.012)
-  当日高値: 186.212 / 当日安値: 186.046
-  ADR消化: 20.5% (使用 0.167 / 残り 0.646)
-  price_zone: Pivot_to_R1 | R1まで 0.162 / Pivotまで -0.107 / S1まで -0.257
+  現在値: 186.371 (前日終値比 +0.156)
+  当日高値: 186.381 / 当日安値: 186.046
+  ADR消化: 41.2% (使用 0.335 / 残り 0.478)
+  price_zone: R1_to_R2 | R1まで -0.006 / Pivotまで -0.275 / S1まで -0.425
   前日: 高値 186.245 / 安値 185.826 / NY終値 186.215 | 前日レンジ/ADR: 51.5%
   Pivot: 186.096 | R1 186.365 / R2 186.514 | S1 185.946 / S2 185.677
   ADR20: 0.813 (81p) | ATR14: 0.78 (78p) | ATR_SL目安: 0.78〜1.17
 
 [AUDUSD]
-  現在値: 0.70133 (前日終値比 +0.00155)
+  現在値: 0.70167 (前日終値比 +0.00189)
   当日高値: 0.70211 / 当日安値: 0.69868
   ADR消化: 82.9% (使用 0.00343 / 残り 0.00071)
-  price_zone: Pivot_to_R1 | R1まで 0.00001 / Pivotまで -0.0016 / S1まで -0.00315
+  price_zone: R1_to_R2 | R1まで -0.00033 / Pivotまで -0.00194 / S1まで -0.00349
   前日: 高値 0.70129 / 安値 0.69813 / NY終値 0.69978 | 前日レンジ/ADR: 76.3%
   Pivot: 0.69973 | R1 0.70134 / R2 0.70289 | S1 0.69818 / S2 0.69657
   ADR20: 0.00414 (41p) | ATR14: 0.00434 (43p) | ATR_SL目安: 0.00434〜0.00651
 
 [EURGBP]
-  現在値: 0.85315 (前日終値比 -0.00007)
-  当日高値: 0.85341 / 当日安値: 0.85275
-  ADR消化: 19.2% (使用 0.00066 / 残り 0.00278)
-  price_zone: Pivot_to_R1 | R1まで 0.00123 / Pivotまで -0.00012 / S1まで -0.00127
+  現在値: 0.85357 (前日終値比 +0.00035)
+  当日高値: 0.85364 / 当日安値: 0.85275
+  ADR消化: 25.9% (使用 0.00089 / 残り 0.00255)
+  price_zone: Pivot_to_R1 | R1まで 0.00081 / Pivotまで -0.00054 / S1まで -0.00169
   前日: 高値 0.85419 / 安値 0.85169 / NY終値 0.85322 | 前日レンジ/ADR: 72.7%
   Pivot: 0.85303 | R1 0.85438 / R2 0.85553 | S1 0.85188 / S2 0.85053
   ADR20: 0.00344 (34p) | ATR14: 0.00338 (34p) | ATR_SL目安: 0.00338〜0.00507
 
 [USDCAD]
-  現在値: 1.40739 (前日終値比 -0.00143)
-  当日高値: 1.40902 / 当日安値: 1.40726
-  ADR消化: 32.8% (使用 0.00176 / 残り 0.00361)
-  price_zone: S1_to_Pivot | R1まで 0.00337 / Pivotまで 0.00185 / S1まで -0.0001
+  現在値: 1.40633 (前日終値比 -0.00249)
+  当日高値: 1.40902 / 当日安値: 1.40631
+  ADR消化: 50.5% (使用 0.00271 / 残り 0.00266)
+  price_zone: S2_to_S1 | R1まで 0.00443 / Pivotまで 0.00291 / S1まで 0.00096
   前日: 高値 1.41118 / 安値 1.40771 / NY終値 1.40882 | 前日レンジ/ADR: 64.6%
   Pivot: 1.40924 | R1 1.41076 / R2 1.41271 | S1 1.40729 / S2 1.40577
   ADR20: 0.00537 (54p) | ATR14: 0.00544 (54p) | ATR_SL目安: 0.00544〜0.00816
 
 [XAUUSD]
-  現在値: 4118.5 (前日終値比 -11.79)
+  現在値: 4130.35 (前日終値比 +0.06)
   当日高値: 4141.06 / 当日安値: 4112.73
   ADR消化: 30.7% (使用 28.33 / 残り 64.04)
-  price_zone: S1_to_Pivot | R1まで 53.71 / Pivotまで 5.26 / S1まで -36.66
+  price_zone: Pivot_to_R1 | R1まで 41.86 / Pivotまで -6.59 / S1まで -48.51
   前日: 高値 4165.68 / 安値 4075.31 / NY終値 4130.29 | 前日レンジ/ADR: 97.8%
   Pivot: 4123.76 | R1 4172.21 / R2 4214.13 | S1 4081.84 / S2 4033.39
   ADR20: 92.37 | ATR14: 94.54 | ATR_SL目安: 94.54〜141.81
 
-【Economic Calendar】(High/Medium, JST) as_of: 2026-07-23T11:18:06+09:00
+【Economic Calendar】(High/Medium, JST) as_of: 2026-07-23T12:38:51+09:00
 04:00 [USD] (Medium) President Trump Speaks | 発表時刻経過(実績値は別ソースで確認)
 10:30 [AUD] (High) Employment Change | 予想: 16.4K | 前回: 40.3K | 発表時刻経過(実績値は別ソースで確認)
 10:30 [AUD] (High) Unemployment Rate | 予想: 4.4% | 前回: 4.4% | 発表時刻経過(実績値は別ソースで確認)
@@ -248,12 +248,12 @@ DXY: 101.12 (-0.06%) | US10Y: 4.657% (+0.029) | VIX: 16.64 (-2.4%)
 
 ===== Raw: intraday.json =====
 {
- "as_of": "2026-07-23T11:18:06+09:00",
+ "as_of": "2026-07-23T12:38:51+09:00",
  "timezone": "Asia/Tokyo",
  "session_date": "2026-07-22",
  "note": "事実データのみ。トレード判定は含まない。ADRはdaily-levels.jsonのADR20基準。",
  "market_session": {
-  "as_of": "2026-07-23T11:18:06+09:00",
+  "as_of": "2026-07-23T12:38:51+09:00",
   "tokyo": "open",
   "london": "closed",
   "new_york": "closed",
@@ -266,108 +266,108 @@ DXY: 101.12 (-0.06%) | US10Y: 4.657% (+0.029) | VIX: 16.64 (-2.4%)
  },
  "pairs": {
   "USDJPY": {
-   "price": 163.066,
+   "price": 163.059,
    "today_high": 163.187,
    "today_low": 163.005,
-   "change_from_prev_close": -0.095,
+   "change_from_prev_close": -0.102,
    "adr_used": 0.181,
    "adr_remaining": 0.507,
    "adr_used_pct": 26.3,
    "price_zone": "S1_to_Pivot",
-   "dist_to_r1": 0.304,
-   "dist_to_s1": -0.171,
-   "dist_to_pivot": 0.038
+   "dist_to_r1": 0.311,
+   "dist_to_s1": -0.164,
+   "dist_to_pivot": 0.045
   },
   "EURUSD": {
-   "price": 1.14189,
-   "today_high": 1.14207,
+   "price": 1.14291,
+   "today_high": 1.14299,
    "today_low": 1.1406,
-   "change_from_prev_close": 0.00061,
-   "adr_used": 0.00147,
-   "adr_remaining": 0.00374,
-   "adr_used_pct": 28.2,
-   "price_zone": "Pivot_to_R1",
-   "dist_to_r1": 0.00048,
-   "dist_to_s1": -0.0019,
-   "dist_to_pivot": -0.0008
+   "change_from_prev_close": 0.00163,
+   "adr_used": 0.00239,
+   "adr_remaining": 0.00282,
+   "adr_used_pct": 45.9,
+   "price_zone": "R1_to_R2",
+   "dist_to_r1": -0.00054,
+   "dist_to_s1": -0.00292,
+   "dist_to_pivot": -0.00182
   },
   "GBPUSD": {
-   "price": 1.33846,
-   "today_high": 1.33865,
+   "price": 1.33902,
+   "today_high": 1.3391,
    "today_low": 1.3368,
-   "change_from_prev_close": 0.00085,
-   "adr_used": 0.00185,
-   "adr_remaining": 0.00565,
-   "adr_used_pct": 24.7,
+   "change_from_prev_close": 0.00141,
+   "adr_used": 0.0023,
+   "adr_remaining": 0.0052,
+   "adr_used_pct": 30.7,
    "price_zone": "Pivot_to_R1",
-   "dist_to_r1": 0.0011,
-   "dist_to_s1": -0.00286,
-   "dist_to_pivot": -0.00092
+   "dist_to_r1": 0.00054,
+   "dist_to_s1": -0.00342,
+   "dist_to_pivot": -0.00148
   },
   "EURJPY": {
-   "price": 186.203,
-   "today_high": 186.212,
+   "price": 186.371,
+   "today_high": 186.381,
    "today_low": 186.046,
-   "change_from_prev_close": -0.012,
-   "adr_used": 0.167,
-   "adr_remaining": 0.646,
-   "adr_used_pct": 20.5,
-   "price_zone": "Pivot_to_R1",
-   "dist_to_r1": 0.162,
-   "dist_to_s1": -0.257,
-   "dist_to_pivot": -0.107
+   "change_from_prev_close": 0.156,
+   "adr_used": 0.335,
+   "adr_remaining": 0.478,
+   "adr_used_pct": 41.2,
+   "price_zone": "R1_to_R2",
+   "dist_to_r1": -0.006,
+   "dist_to_s1": -0.425,
+   "dist_to_pivot": -0.275
   },
   "AUDUSD": {
-   "price": 0.70133,
+   "price": 0.70167,
    "today_high": 0.70211,
    "today_low": 0.69868,
-   "change_from_prev_close": 0.00155,
+   "change_from_prev_close": 0.00189,
    "adr_used": 0.00343,
    "adr_remaining": 0.00071,
    "adr_used_pct": 82.9,
-   "price_zone": "Pivot_to_R1",
-   "dist_to_r1": 0.00001,
-   "dist_to_s1": -0.00315,
-   "dist_to_pivot": -0.0016
+   "price_zone": "R1_to_R2",
+   "dist_to_r1": -0.00033,
+   "dist_to_s1": -0.00349,
+   "dist_to_pivot": -0.00194
   },
   "EURGBP": {
-   "price": 0.85315,
-   "today_high": 0.85341,
+   "price": 0.85357,
+   "today_high": 0.85364,
    "today_low": 0.85275,
-   "change_from_prev_close": -0.00007,
-   "adr_used": 0.00066,
-   "adr_remaining": 0.00278,
-   "adr_used_pct": 19.2,
+   "change_from_prev_close": 0.00035,
+   "adr_used": 0.00089,
+   "adr_remaining": 0.00255,
+   "adr_used_pct": 25.9,
    "price_zone": "Pivot_to_R1",
-   "dist_to_r1": 0.00123,
-   "dist_to_s1": -0.00127,
-   "dist_to_pivot": -0.00012
+   "dist_to_r1": 0.00081,
+   "dist_to_s1": -0.00169,
+   "dist_to_pivot": -0.00054
   },
   "USDCAD": {
-   "price": 1.40739,
+   "price": 1.40633,
    "today_high": 1.40902,
-   "today_low": 1.40726,
-   "change_from_prev_close": -0.00143,
-   "adr_used": 0.00176,
-   "adr_remaining": 0.00361,
-   "adr_used_pct": 32.8,
-   "price_zone": "S1_to_Pivot",
-   "dist_to_r1": 0.00337,
-   "dist_to_s1": -0.0001,
-   "dist_to_pivot": 0.00185
+   "today_low": 1.40631,
+   "change_from_prev_close": -0.00249,
+   "adr_used": 0.00271,
+   "adr_remaining": 0.00266,
+   "adr_used_pct": 50.5,
+   "price_zone": "S2_to_S1",
+   "dist_to_r1": 0.00443,
+   "dist_to_s1": 0.00096,
+   "dist_to_pivot": 0.00291
   },
   "XAUUSD": {
-   "price": 4118.5,
+   "price": 4130.35,
    "today_high": 4141.06,
    "today_low": 4112.73,
-   "change_from_prev_close": -11.79,
+   "change_from_prev_close": 0.06,
    "adr_used": 28.33,
    "adr_remaining": 64.04,
    "adr_used_pct": 30.7,
-   "price_zone": "S1_to_Pivot",
-   "dist_to_r1": 53.71,
-   "dist_to_s1": -36.66,
-   "dist_to_pivot": 5.26
+   "price_zone": "Pivot_to_R1",
+   "dist_to_r1": 41.86,
+   "dist_to_s1": -48.51,
+   "dist_to_pivot": -6.59
   }
  },
  "errors": []
@@ -375,7 +375,7 @@ DXY: 101.12 (-0.06%) | US10Y: 4.657% (+0.029) | VIX: 16.64 (-2.4%)
 
 ===== Raw: economic-calendar.json =====
 {
- "as_of": "2026-07-23T11:18:06+09:00",
+ "as_of": "2026-07-23T12:38:51+09:00",
  "date": "2026-07-23",
  "timezone": "Asia/Tokyo",
  "source": "Forex Factory calendar feed",
