@@ -26,18 +26,31 @@ if (!daily) {
 }
 
 const esc = (s) => String(s ?? "-").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const PAIR_ORDER = ["USDJPY","EURUSD","GBPUSD","EURJPY","AUDUSD","EURGBP","USDCAD","XAUUSD"];
+const PAIR_ORDER = ["USDJPY","EURUSD","GBPUSD","EURJPY","AUDUSD","EURGBP","USDCAD","USDCHF","NZDUSD","AUDNZD","XAUUSD"];
 
 // ---- サマリー（テキスト表）----
 let summary = "";
-const ms = daily.market_sentiment || {};
+// 市場心理: intradayに最新があればそれを優先（なければ朝のdaily値）
+let ms = daily.market_sentiment || {};
+let msAsOf = daily.as_of;
+if (intra?.sentiment?.DXY) {
+  ms = {
+    dxy: intra.sentiment.DXY?.value ?? null,
+    dxy_change_pct: intra.sentiment.DXY?.changePct ?? null,
+    us10y: intra.sentiment.US10Y?.value ?? null,
+    us10y_change: intra.sentiment.US10Y?.change ?? null,
+    vix: intra.sentiment.VIX?.value ?? null,
+    vix_change_pct: intra.sentiment.VIX?.changePct ?? null,
+  };
+  msAsOf = intra.as_of;
+}
 const sess = intra?.market_session;
 if (sess) {
   summary += `【Market Session】(as_of: ${sess.as_of})\n`;
   summary += `東京: ${sess.tokyo} / ロンドン: ${sess.london} / NY: ${sess.new_york}`;
   summary += `（オープンJST: 東京 ${sess.opens_jst.tokyo} / ロンドン ${sess.opens_jst.london} / NY ${sess.opens_jst.new_york}）\n\n`;
 }
-summary += `【Market Sentiment】(as_of: ${daily.as_of})\n`;
+summary += `【Market Sentiment】(as_of: ${msAsOf})\n`;
 summary += `DXY: ${ms.dxy} (${ms.dxy_change_pct}%) | US10Y: ${ms.us10y}% (${ms.us10y_change >= 0 ? "+" : ""}${ms.us10y_change}) | VIX: ${ms.vix} (${ms.vix_change_pct}%)\n\n`;
 
 summary += `【Pairs】 daily levels as_of: ${daily.as_of}` + (intra ? ` / intraday as_of: ${intra.as_of}` : " / intraday: なし") + "\n";
