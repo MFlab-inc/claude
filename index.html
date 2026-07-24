@@ -172,10 +172,10 @@
 </div>
 
 <script>
-const PAIR_ORDER = ["USDJPY","EURUSD","GBPUSD","EURJPY","AUDUSD","EURGBP","USDCAD","XAUUSD"];
+const PAIR_ORDER = ["USDJPY","EURUSD","GBPUSD","EURJPY","AUDUSD","EURGBP","USDCAD","USDCHF","NZDUSD","AUDNZD","XAUUSD"];
 const TV_SYMBOLS = {
   USDJPY: "OANDA:USDJPY", EURUSD: "OANDA:EURUSD", GBPUSD: "OANDA:GBPUSD",
-  EURJPY: "OANDA:EURJPY", AUDUSD: "OANDA:AUDUSD", EURGBP: "OANDA:EURGBP", USDCAD: "OANDA:USDCAD", XAUUSD: "OANDA:XAUUSD",
+  EURJPY: "OANDA:EURJPY", AUDUSD: "OANDA:AUDUSD", EURGBP: "OANDA:EURGBP", USDCAD: "OANDA:USDCAD", USDCHF: "OANDA:USDCHF", NZDUSD: "OANDA:NZDUSD", AUDNZD: "OANDA:AUDNZD", XAUUSD: "OANDA:XAUUSD",
 };
 const SENT_ORDER = ["DXY","US10Y","VIX"];
 const HIST_DAYS = 15;
@@ -308,6 +308,10 @@ async function fetchIntraday(manual = false) {
         intraday[code] = { price: q.price, high: q.today_high, low: q.today_low };
         okCount++;
       }
+    }
+    if (j.sentiment && j.sentiment.DXY && dailyData) {
+      dailyData.sentiment = { ...dailyData.sentiment, ...j.sentiment };
+      renderSentiment(dailyData);
     }
     if (okCount > 0) {
       const t = (j.as_of || "").slice(11, 16);
