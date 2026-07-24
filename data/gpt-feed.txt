@@ -1,6 +1,6 @@
 FX Daily Levels - GPT Feed (plain text)
-feed_generated_at: 2026-07-24T19:06:38+09:00 / timezone: Asia/Tokyo
-daily as_of: 2026-07-24T15:14:50+09:00 | intraday as_of: 2026-07-24T19:06:30+09:00 | calendar as_of: 2026-07-24T19:06:30+09:00 | daytrade as_of: 2026-07-24T19:06:33+09:00
+feed_generated_at: 2026-07-24T19:09:31+09:00 / timezone: Asia/Tokyo
+daily as_of: 2026-07-24T19:09:12+09:00 | intraday as_of: 2026-07-24T19:06:30+09:00 | calendar as_of: 2026-07-24T19:09:12+09:00 | daytrade as_of: 2026-07-24T19:06:33+09:00
 注意: 事実データのみ。トレード判定は含まない。intradayは最大1時間前の値の場合がある。
 
 ===== サマリー =====
@@ -10,7 +10,7 @@ daily as_of: 2026-07-24T15:14:50+09:00 | intraday as_of: 2026-07-24T19:06:30+09:
 【Market Sentiment】(as_of: 2026-07-24T19:06:30+09:00)
 DXY: 101.37 (-0.06%) | US2Y: 4.035%[yahoo:2YY=F] (+0.002) | US10Y: 4.703% (+0.046) | VIX: 18.64 (-0.32%)
 
-【Pairs】 daily levels as_of: 2026-07-24T15:14:50+09:00 / intraday as_of: 2026-07-24T19:06:30+09:00
+【Pairs】 daily levels as_of: 2026-07-24T19:09:12+09:00 / intraday as_of: 2026-07-24T19:06:30+09:00
 
 [USDJPY]
   現在値: 163.696 (前日終値比 -0.174)
@@ -168,7 +168,7 @@ DXY: 101.37 (-0.06%) | US2Y: 4.035%[yahoo:2YY=F] (+0.002) | US10Y: 4.703% (+0.04
   H1確定足[18:00] O4056.79 H4059.59 L4052.19 C4059.54 スイング高 4052.33@06:00 / 安 4022.09@15:00
   M15確定足[18:45] O4055.63 H4059.59 L4053.93 C4059.54 スイング高 4059.59@18:00 / 安 4044.56@17:15
 
-【Economic Calendar】(High/Medium, JST) as_of: 2026-07-24T19:06:30+09:00
+【Economic Calendar】(High/Medium, JST) as_of: 2026-07-24T19:09:12+09:00
 15:00 [GBP] (Medium) Retail Sales m/m | 予想: -0.3% | 前回: 1.2% | 発表時刻経過(実績値は別ソースで確認)
 16:15 [EUR] (Medium) French Flash Manufacturing PMI | 予想: 51.0 | 前回: 50.7 | 発表時刻経過(実績値は別ソースで確認)
 16:15 [EUR] (Medium) French Flash Services PMI | 予想: 47.5 | 前回: 47.4 | 発表時刻経過(実績値は別ソースで確認)
@@ -179,18 +179,18 @@ DXY: 101.37 (-0.06%) | US2Y: 4.035%[yahoo:2YY=F] (+0.002) | US10Y: 4.703% (+0.04
 
 ===== Raw: daily-levels.json =====
 {
- "as_of": "2026-07-24T15:14:50+09:00",
+ "as_of": "2026-07-24T19:09:12+09:00",
  "timezone": "Asia/Tokyo",
  "session_date": "2026-07-23",
  "market_sentiment": {
-  "dxy": 101.44,
-  "dxy_change_pct": 0.01,
+  "dxy": 101.36,
+  "dxy_change_pct": -0.07,
   "us2y": 4.035,
   "us2y_change": 0.002,
   "us10y": 4.703,
   "us10y_change": 0.046,
-  "vix": 18.7,
-  "vix_change_pct": 12.38
+  "vix": 18.66,
+  "vix_change_pct": -0.21
  },
  "pairs": {
   "USDJPY": {
@@ -582,7 +582,7 @@ DXY: 101.37 (-0.06%) | US2Y: 4.035%[yahoo:2YY=F] (+0.002) | US10Y: 4.703% (+0.04
 
 ===== Raw: economic-calendar.json =====
 {
- "as_of": "2026-07-24T19:06:30+09:00",
+ "as_of": "2026-07-24T19:09:12+09:00",
  "date": "2026-07-24",
  "timezone": "Asia/Tokyo",
  "source": "Forex Factory calendar feed",

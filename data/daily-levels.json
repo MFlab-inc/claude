@@ -1,16 +1,16 @@
 {
-  "as_of": "2026-07-24T15:14:50+09:00",
+  "as_of": "2026-07-24T19:09:12+09:00",
   "timezone": "Asia/Tokyo",
   "session_date": "2026-07-23",
   "market_sentiment": {
-    "dxy": 101.44,
-    "dxy_change_pct": 0.01,
+    "dxy": 101.36,
+    "dxy_change_pct": -0.07,
     "us2y": 4.035,
     "us2y_change": 0.002,
     "us10y": 4.703,
     "us10y_change": 0.046,
-    "vix": 18.7,
-    "vix_change_pct": 12.38
+    "vix": 18.66,
+    "vix_change_pct": -0.21
   },
   "pairs": {
     "USDJPY": {
