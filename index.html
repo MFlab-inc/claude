@@ -315,7 +315,7 @@ async function fetchIntraday(manual = false) {
     }
     if (okCount > 0) {
       const t = (j.as_of || "").slice(11, 16);
-      document.getElementById("meta-live").textContent = `当日データ: ${t} JST時点（30分ごと自動更新）`;
+      document.getElementById("meta-live").textContent = `当日データ: ${t} JST時点（15分ごと自動更新）`;
       renderPairs();
     } else {
       document.getElementById("meta-live").textContent = "（当日データなし）";
