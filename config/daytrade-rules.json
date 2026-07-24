@@ -1,0 +1,44 @@
+{
+  "_comment": "デイトレ判断コンテキストのルール定義。ここを編集すれば daytrade.js のコード変更なしで挙動を変えられる",
+
+  "stale_min": 20,
+
+  "fractal": { "left": 2, "right": 2 },
+
+  "stop_windows": {
+    "High":   { "before_min": 15, "after_min": 15 },
+    "Medium": { "before_min": 0,  "after_min": 0, "mode": "warn_only" }
+  },
+
+  "special_events": [
+    {
+      "_comment": "最重要指標: 前後30分停止",
+      "match": "CPI|Non-Farm|Nonfarm|NFP|Unemployment Rate|GDP|PCE|Retail Sales|ISM",
+      "before_min": 30,
+      "after_min": 30
+    }
+  ],
+
+  "central_bank": {
+    "_comment": "中銀イベント: 前30分〜後60分停止（声明後の会見・乱高下をカバー）",
+    "match": "FOMC|Federal Funds Rate|BOJ|Bank of Japan|ECB|Main Refinancing|BOE|Official Bank Rate|RBA|RBNZ|SNB|BOC|Overnight Rate|Rate Statement|Monetary Policy|Press Conference|Cash Rate",
+    "before_min": 30,
+    "after_min": 60
+  },
+
+  "pair_currencies": {
+    "USDJPY": ["USD", "JPY"],
+    "EURUSD": ["EUR", "USD"],
+    "GBPUSD": ["GBP", "USD"],
+    "EURJPY": ["EUR", "JPY"],
+    "AUDUSD": ["AUD", "USD"],
+    "EURGBP": ["EUR", "GBP"],
+    "USDCAD": ["USD", "CAD"],
+    "USDCHF": ["USD", "CHF"],
+    "NZDUSD": ["NZD", "USD"],
+    "AUDNZD": ["AUD", "NZD"],
+    "XAUUSD": ["USD"]
+  },
+
+  "next_event_lookahead_hours": 10
+}
