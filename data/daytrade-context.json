@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-07-25T07:04:29+09:00",
+  "as_of": "2026-07-25T08:15:37+09:00",
   "timezone": "Asia/Tokyo",
   "note": "事実データと機械判定のみ。売買推奨は含まない。gateはイベント時間ルール(config/daytrade-rules.json)による判定。",
   "rules_summary": {
@@ -24,9 +24,9 @@
   },
   "pairs": {
     "USDJPY": {
-      "price": 163.842,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price": 163.845,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
@@ -75,52 +75,52 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
-          "o": 163.846,
-          "h": 163.861,
-          "l": 163.842,
-          "c": 163.844,
+          "time_jst": "2026-07-25 08:00",
+          "o": 163.842,
+          "h": 163.849,
+          "l": 163.815,
+          "c": 163.845,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
+          "missing_m5_times": [],
+          "complete": true
+        },
+        "swing_high": {
+          "price": 163.867,
+          "time_jst": "2026-07-25 07:00"
+        },
+        "swing_low": {
+          "price": 163.811,
+          "time_jst": "2026-07-25 07:00"
+        }
+      },
+      "h1": {
+        "last_closed": {
+          "time_jst": "2026-07-25 07:00",
+          "o": 163.845,
+          "h": 163.867,
+          "l": 163.811,
+          "c": 163.84,
+          "source_m5_count": 12,
+          "expected_m5_count": 12,
+          "complete": true
+        },
+        "latest_expected_bucket": {
+          "time_jst": "2026-07-25 07:00",
+          "source_m5_count": 12,
+          "expected_m5_count": 12,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
           "price": 163.878,
-          "time_jst": "2026-07-25 05:30"
-        },
-        "swing_low": {
-          "price": 163.803,
-          "time_jst": "2026-07-25 06:00"
-        }
-      },
-      "h1": {
-        "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 163.855,
-          "h": 163.861,
-          "l": 163.803,
-          "c": 163.844,
-          "source_m5_count": 12,
-          "expected_m5_count": 12,
-          "complete": true
-        },
-        "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
-          "source_m5_count": 12,
-          "expected_m5_count": 12,
-          "missing_m5_times": [],
-          "complete": true
-        },
-        "swing_high": {
-          "price": 163.891,
-          "time_jst": "2026-07-24 22:00"
+          "time_jst": "2026-07-25 05:00"
         },
         "swing_low": {
           "price": 163.651,
@@ -135,9 +135,9 @@
       }
     },
     "EURUSD": {
-      "price": 1.13758,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price": 1.13766,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
@@ -186,17 +186,17 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
-          "o": 1.13758,
-          "h": 1.1377,
-          "l": 1.13756,
-          "c": 1.13758,
+          "time_jst": "2026-07-25 08:00",
+          "o": 1.13762,
+          "h": 1.13768,
+          "l": 1.1376,
+          "c": 1.13766,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "missing_m5_times": [],
@@ -213,17 +213,17 @@
       },
       "h1": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 1.13722,
-          "h": 1.1379,
-          "l": 1.13701,
-          "c": 1.13758,
+          "time_jst": "2026-07-25 07:00",
+          "o": 1.13758,
+          "h": 1.13771,
+          "l": 1.1375,
+          "c": 1.13761,
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
+          "time_jst": "2026-07-25 07:00",
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "missing_m5_times": [],
@@ -234,8 +234,8 @@
           "time_jst": "2026-07-25 00:00"
         },
         "swing_low": {
-          "price": 1.13654,
-          "time_jst": "2026-07-24 22:00"
+          "price": 1.13675,
+          "time_jst": "2026-07-25 05:00"
         }
       },
       "gate": {
@@ -246,9 +246,9 @@
       }
     },
     "GBPUSD": {
-      "price": 1.3324,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price": 1.33205,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
@@ -297,25 +297,25 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
-          "o": 1.33211,
-          "h": 1.33217,
-          "l": 1.33177,
-          "c": 1.3318,
+          "time_jst": "2026-07-25 08:00",
+          "o": 1.33203,
+          "h": 1.33245,
+          "l": 1.33198,
+          "c": 1.33205,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
-          "price": 1.33257,
-          "time_jst": "2026-07-25 06:00"
+          "price": 1.33243,
+          "time_jst": "2026-07-25 07:00"
         },
         "swing_low": {
           "price": 1.33161,
@@ -324,17 +324,17 @@
       },
       "h1": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 1.33231,
-          "h": 1.33257,
-          "l": 1.33177,
-          "c": 1.3318,
+          "time_jst": "2026-07-25 07:00",
+          "o": 1.33187,
+          "h": 1.33243,
+          "l": 1.33187,
+          "c": 1.33203,
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
+          "time_jst": "2026-07-25 07:00",
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "missing_m5_times": [],
@@ -345,8 +345,8 @@
           "time_jst": "2026-07-25 00:00"
         },
         "swing_low": {
-          "price": 1.33065,
-          "time_jst": "2026-07-24 22:00"
+          "price": 1.33161,
+          "time_jst": "2026-07-25 05:00"
         }
       },
       "gate": {
@@ -357,9 +357,9 @@
       }
     },
     "EURJPY": {
-      "price": 186.39,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price": 186.389,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
@@ -408,44 +408,44 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
-          "o": 186.385,
-          "h": 186.418,
-          "l": 186.384,
-          "c": 186.4,
+          "time_jst": "2026-07-25 08:00",
+          "o": 186.389,
+          "h": 186.405,
+          "l": 186.364,
+          "c": 186.389,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
-          "price": 186.43,
-          "time_jst": "2026-07-25 06:00"
+          "price": 186.418,
+          "time_jst": "2026-07-25 06:45"
         },
         "swing_low": {
-          "price": 186.277,
-          "time_jst": "2026-07-25 05:30"
+          "price": 186.351,
+          "time_jst": "2026-07-25 07:00"
         }
       },
       "h1": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 186.34,
-          "h": 186.43,
-          "l": 186.279,
-          "c": 186.4,
+          "time_jst": "2026-07-25 07:00",
+          "o": 186.387,
+          "h": 186.409,
+          "l": 186.351,
+          "c": 186.392,
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
+          "time_jst": "2026-07-25 07:00",
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "missing_m5_times": [],
@@ -468,9 +468,9 @@
       }
     },
     "AUDUSD": {
-      "price": 0.69785,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price": 0.69788,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
@@ -519,44 +519,44 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
-          "o": 0.69786,
-          "h": 0.69794,
-          "l": 0.69769,
-          "c": 0.69778,
+          "time_jst": "2026-07-25 08:00",
+          "o": 0.69788,
+          "h": 0.69821,
+          "l": 0.69767,
+          "c": 0.69788,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
-          "price": 0.69849,
-          "time_jst": "2026-07-25 06:00"
+          "price": 0.69801,
+          "time_jst": "2026-07-25 07:00"
         },
         "swing_low": {
-          "price": 0.69749,
-          "time_jst": "2026-07-25 06:00"
+          "price": 0.69769,
+          "time_jst": "2026-07-25 06:45"
         }
       },
       "h1": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 0.69834,
-          "h": 0.69849,
-          "l": 0.69749,
-          "c": 0.69778,
+          "time_jst": "2026-07-25 07:00",
+          "o": 0.6978,
+          "h": 0.69801,
+          "l": 0.6978,
+          "c": 0.69787,
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
+          "time_jst": "2026-07-25 07:00",
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "missing_m5_times": [],
@@ -579,9 +579,9 @@
       }
     },
     "EURGBP": {
-      "price": 0.85401,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price": 0.85407,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
@@ -630,44 +630,44 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
-          "o": 0.85397,
-          "h": 0.85422,
-          "l": 0.85389,
-          "c": 0.85418,
+          "time_jst": "2026-07-25 08:00",
+          "o": 0.85405,
+          "h": 0.85412,
+          "l": 0.85378,
+          "c": 0.85407,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
-          "price": 0.85357,
-          "time_jst": "2026-07-25 01:45"
+          "price": 0.85426,
+          "time_jst": "2026-07-25 06:30"
         },
         "swing_low": {
-          "price": 0.85329,
-          "time_jst": "2026-07-25 06:00"
+          "price": 0.85378,
+          "time_jst": "2026-07-25 07:00"
         }
       },
       "h1": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 0.85356,
-          "h": 0.85426,
-          "l": 0.85329,
-          "c": 0.85418,
+          "time_jst": "2026-07-25 07:00",
+          "o": 0.85411,
+          "h": 0.85415,
+          "l": 0.85378,
+          "c": 0.85404,
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
+          "time_jst": "2026-07-25 07:00",
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "missing_m5_times": [],
@@ -690,14 +690,14 @@
       }
     },
     "USDCAD": {
-      "price": 1.40942,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price": 1.4094,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
         "high": 1.40976,
-        "low": 1.40923
+        "low": 1.40919
       },
       "sessions_today": {
         "tokyo": {
@@ -741,25 +741,25 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
-          "o": 1.40939,
-          "h": 1.40976,
-          "l": 1.40933,
-          "c": 1.40949,
+          "time_jst": "2026-07-25 08:00",
+          "o": 1.40933,
+          "h": 1.40944,
+          "l": 1.40919,
+          "c": 1.4094,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
-          "price": 1.41043,
-          "time_jst": "2026-07-25 05:15"
+          "price": 1.40976,
+          "time_jst": "2026-07-25 06:45"
         },
         "swing_low": {
           "price": 1.40923,
@@ -768,25 +768,25 @@
       },
       "h1": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 1.4094,
-          "h": 1.40976,
-          "l": 1.40923,
-          "c": 1.40949,
+          "time_jst": "2026-07-25 07:00",
+          "o": 1.40955,
+          "h": 1.40955,
+          "l": 1.40929,
+          "c": 1.40933,
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
+          "time_jst": "2026-07-25 07:00",
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
-          "price": 1.4115,
-          "time_jst": "2026-07-24 22:00"
+          "price": 1.41043,
+          "time_jst": "2026-07-25 05:00"
         },
         "swing_low": {
           "price": 1.40755,
@@ -801,9 +801,9 @@
       }
     },
     "USDCHF": {
-      "price": 0.81837,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price": 0.81831,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
@@ -852,52 +852,52 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
-          "o": 0.81832,
-          "h": 0.81853,
-          "l": 0.81829,
+          "time_jst": "2026-07-25 08:00",
+          "o": 0.8183,
+          "h": 0.8185,
+          "l": 0.8177,
           "c": 0.81831,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
+          "missing_m5_times": [],
+          "complete": true
+        },
+        "swing_high": {
+          "price": 0.81853,
+          "time_jst": "2026-07-25 06:45"
+        },
+        "swing_low": {
+          "price": 0.81759,
+          "time_jst": "2026-07-25 07:00"
+        }
+      },
+      "h1": {
+        "last_closed": {
+          "time_jst": "2026-07-25 07:00",
+          "o": 0.81832,
+          "h": 0.81844,
+          "l": 0.81759,
+          "c": 0.8183,
+          "source_m5_count": 12,
+          "expected_m5_count": 12,
+          "complete": true
+        },
+        "latest_expected_bucket": {
+          "time_jst": "2026-07-25 07:00",
+          "source_m5_count": 12,
+          "expected_m5_count": 12,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
           "price": 0.81859,
-          "time_jst": "2026-07-25 05:30"
-        },
-        "swing_low": {
-          "price": 0.81793,
-          "time_jst": "2026-07-25 06:00"
-        }
-      },
-      "h1": {
-        "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 0.81823,
-          "h": 0.81853,
-          "l": 0.81793,
-          "c": 0.81831,
-          "source_m5_count": 12,
-          "expected_m5_count": 12,
-          "complete": true
-        },
-        "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
-          "source_m5_count": 12,
-          "expected_m5_count": 12,
-          "missing_m5_times": [],
-          "complete": true
-        },
-        "swing_high": {
-          "price": 0.81855,
-          "time_jst": "2026-07-24 22:00"
+          "time_jst": "2026-07-25 05:00"
         },
         "swing_low": {
           "price": 0.81637,
@@ -912,9 +912,9 @@
       }
     },
     "NZDUSD": {
-      "price": 0.57876,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price": 0.57877,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
@@ -963,17 +963,17 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "o": 0.57877,
-          "h": 0.57887,
-          "l": 0.5787,
+          "h": 0.57884,
+          "l": 0.57875,
           "c": 0.57877,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "missing_m5_times": [],
@@ -984,23 +984,23 @@
           "time_jst": "2026-07-25 06:00"
         },
         "swing_low": {
-          "price": 0.57854,
-          "time_jst": "2026-07-25 05:30"
+          "price": 0.5787,
+          "time_jst": "2026-07-25 06:45"
         }
       },
       "h1": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 0.57891,
-          "h": 0.57907,
-          "l": 0.5787,
-          "c": 0.57877,
+          "time_jst": "2026-07-25 07:00",
+          "o": 0.57877,
+          "h": 0.57883,
+          "l": 0.57874,
+          "c": 0.57876,
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
+          "time_jst": "2026-07-25 07:00",
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "missing_m5_times": [],
@@ -1011,8 +1011,8 @@
           "time_jst": "2026-07-25 00:00"
         },
         "swing_low": {
-          "price": 0.57771,
-          "time_jst": "2026-07-24 22:00"
+          "price": 0.57854,
+          "time_jst": "2026-07-25 05:00"
         }
       },
       "gate": {
@@ -1023,9 +1023,9 @@
       }
     },
     "AUDNZD": {
-      "price": 1.20577,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price": 1.20587,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
@@ -1074,25 +1074,25 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
-          "o": 1.20578,
-          "h": 1.20621,
-          "l": 1.20541,
-          "c": 1.20573,
+          "time_jst": "2026-07-25 08:00",
+          "o": 1.2058,
+          "h": 1.20629,
+          "l": 1.20544,
+          "c": 1.20587,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
-          "price": 1.20661,
-          "time_jst": "2026-07-25 05:30"
+          "price": 1.20621,
+          "time_jst": "2026-07-25 06:45"
         },
         "swing_low": {
           "price": 1.20491,
@@ -1101,25 +1101,25 @@
       },
       "h1": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 1.20633,
-          "h": 1.20633,
-          "l": 1.20491,
-          "c": 1.20573,
+          "time_jst": "2026-07-25 07:00",
+          "o": 1.20564,
+          "h": 1.20603,
+          "l": 1.20564,
+          "c": 1.2058,
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
+          "time_jst": "2026-07-25 07:00",
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
-          "price": 1.20856,
-          "time_jst": "2026-07-24 19:00"
+          "price": 1.20661,
+          "time_jst": "2026-07-25 05:00"
         },
         "swing_low": {
           "price": 1.20554,
@@ -1135,8 +1135,8 @@
     },
     "XAUUSD": {
       "price": 4055.98,
-      "price_time_jst": "2026-07-25 07:00",
-      "bar_age_min": 0,
+      "price_time_jst": "2026-07-25 08:10",
+      "bar_age_min": 1,
       "data_status": "OK",
       "today": {
         "session_start_jst": "2026-07-25 06:00",
@@ -1185,44 +1185,44 @@
       },
       "m15": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "o": 4055.93,
           "h": 4056.11,
           "l": 4055.87,
-          "c": 4056.02,
+          "c": 4055.98,
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:45",
+          "time_jst": "2026-07-25 08:00",
           "source_m5_count": 3,
           "expected_m5_count": 3,
           "missing_m5_times": [],
           "complete": true
         },
         "swing_high": {
-          "price": 4057.07,
-          "time_jst": "2026-07-25 05:45"
+          "price": 4056.11,
+          "time_jst": "2026-07-25 07:00"
         },
         "swing_low": {
-          "price": 4051.9,
-          "time_jst": "2026-07-25 05:15"
+          "price": 4055.87,
+          "time_jst": "2026-07-25 07:00"
         }
       },
       "h1": {
         "last_closed": {
-          "time_jst": "2026-07-25 06:00",
-          "o": 4053.38,
+          "time_jst": "2026-07-25 07:00",
+          "o": 4055.93,
           "h": 4056.11,
-          "l": 4053.34,
+          "l": 4055.87,
           "c": 4056.02,
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "complete": true
         },
         "latest_expected_bucket": {
-          "time_jst": "2026-07-25 06:00",
+          "time_jst": "2026-07-25 07:00",
           "source_m5_count": 12,
           "expected_m5_count": 12,
           "missing_m5_times": [],
