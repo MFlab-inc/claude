@@ -19,6 +19,7 @@ function readJson(name) {
 const daily = readJson("daily-levels.json");
 const intra = readJson("intraday.json");
 const cal = readJson("economic-calendar.json");
+const dt = readJson("daytrade-context.json");
 
 if (!daily) {
   console.error("daily-levels.json がありません。先に Daily FX Data を実行してください。");
@@ -76,6 +77,30 @@ for (const code of PAIR_ORDER) {
   summary += `  ADR20: ${d.adr20}${d.adr20_pips ? ` (${d.adr20_pips}p)` : ""} | ATR14: ${d.atr14}${d.atr14_pips ? ` (${d.atr14_pips}p)` : ""} | ATR_SL目安: ${d.atr_sl_1_0}〜${d.atr_sl_1_5}\n`;
 }
 
+// ---- デイトレコンテキスト（V2）----
+if (dt?.pairs) {
+  summary += `\n【Daytrade Context】(as_of: ${dt.as_of}) gate: TRADE_OK=取引可 / WAIT=イベント停止中 / NO_DATA=鮮度不足\n`;
+  const sv = (s) => (s && s.high != null) ? `H${s.high}/L${s.low}` : "-";
+  const sw = (x) => x ? `${x.price}@${(x.time_jst || "").slice(11)}` : "-";
+  for (const code of PAIR_ORDER) {
+    const p = dt.pairs[code];
+    if (!p) continue;
+    if (p.data_status === "NO_DATA" && !p.price) {
+      summary += `[${code}] gate=NO_DATA（取得失敗）\n`;
+      continue;
+    }
+    summary += `[${code}] gate=${p.gate.state}`;
+    if (p.gate.reasons?.length) summary += `（${p.gate.reasons[0]}）`;
+    if (p.gate.next_gated_event) {
+      const ne = p.gate.next_gated_event;
+      summary += ` | 次の停止: ${ne.time_jst} [${ne.currency}] ${ne.event}（${ne.stop_from_jst}〜${ne.stop_until_jst}）`;
+    }
+    summary += `\n`;
+    summary += `  当日(NY17基準): ${sv(p.today)} | 東京: ${sv(p.sessions_today?.tokyo)}(${p.sessions_today?.tokyo?.status}) | LDN: ${sv(p.sessions_today?.london)}(${p.sessions_today?.london?.status}) | NY: ${sv(p.sessions_today?.ny)}(${p.sessions_today?.ny?.status})\n`;
+    summary += `  H1: 終値${p.h1?.last_closed?.c ?? "-"} スイング高 ${sw(p.h1?.swing_high)} / 安 ${sw(p.h1?.swing_low)} | M15: スイング高 ${sw(p.m15?.swing_high)} / 安 ${sw(p.m15?.swing_low)}\n`;
+  }
+}
+
 summary += `\n【Economic Calendar】(High/Medium, JST)` + (cal ? ` as_of: ${cal.as_of}\n` : ` データなし\n`);
 if (cal && cal.events) {
   if (cal.events.length === 0) summary += "本日の該当イベントはありません\n";
@@ -100,7 +125,7 @@ const html = `<!DOCTYPE html>
 <body>
 <h1>FX Daily Levels - GPT Feed</h1>
 <p>feed_generated_at: ${esc(nowJst)} / timezone: Asia/Tokyo</p>
-<p>daily as_of: ${esc(daily.as_of)} | intraday as_of: ${esc(intra?.as_of ?? "なし")} | calendar as_of: ${esc(cal?.as_of ?? "なし")}</p>
+<p>daily as_of: ${esc(daily.as_of)} | intraday as_of: ${esc(intra?.as_of ?? "なし")} | calendar as_of: ${esc(cal?.as_of ?? "なし")} | daytrade as_of: ${esc(dt?.as_of ?? "なし")}</p>
 <p>注意: 事実データのみ。トレード判定は含まない。intradayは最大1時間前の値の場合がある。</p>
 
 <h2>サマリー</h2>
@@ -114,6 +139,9 @@ const html = `<!DOCTYPE html>
 
 <h2>Raw: economic-calendar.json</h2>
 <pre>${esc(cal ? JSON.stringify(cal, null, 1) : "未生成")}</pre>
+
+<h2>Raw: daytrade-context.json</h2>
+<pre>${esc(dt ? JSON.stringify(dt, null, 1) : "未生成")}</pre>
 </body>
 </html>
 `;
@@ -123,7 +151,7 @@ fs.writeFileSync(path.join(dataDir, "gpt-feed.html"), html);
 // ---- TXT版（フォールバック用・プレーンテキスト）----
 const txt = `FX Daily Levels - GPT Feed (plain text)
 feed_generated_at: ${nowJst} / timezone: Asia/Tokyo
-daily as_of: ${daily.as_of} | intraday as_of: ${intra?.as_of ?? "なし"} | calendar as_of: ${cal?.as_of ?? "なし"}
+daily as_of: ${daily.as_of} | intraday as_of: ${intra?.as_of ?? "なし"} | calendar as_of: ${cal?.as_of ?? "なし"} | daytrade as_of: ${dt?.as_of ?? "なし"}
 注意: 事実データのみ。トレード判定は含まない。intradayは最大1時間前の値の場合がある。
 
 ===== サマリー =====
@@ -136,6 +164,9 @@ ${intra ? JSON.stringify(intra, null, 1) : "未生成"}
 
 ===== Raw: economic-calendar.json =====
 ${cal ? JSON.stringify(cal, null, 1) : "未生成"}
+
+===== Raw: daytrade-context.json =====
+${dt ? JSON.stringify(dt, null, 1) : "未生成"}
 `;
 fs.writeFileSync(path.join(dataDir, "gpt-feed.txt"), txt);
 
